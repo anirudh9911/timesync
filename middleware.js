@@ -10,7 +10,7 @@ const isProtectedRoute = createRouteMatcher([
 export default clerkMiddleware((auth, req) => {
   const userId = auth().userId;
 
-  // Protect only real pages, avoid redirecting static asset prefetch
+  // Protect only real pages, avoid redirecting static asset prefetches
   if (!userId && isProtectedRoute(req)) {
     const signInUrl = new URL('/sign-in', req.url);
     signInUrl.searchParams.set('redirect_url', req.url);
